@@ -1,0 +1,91 @@
+<div class="container mt-4">
+    <h2 class="mb-4 text-primary">Consulta de Cliente</h2>
+  
+    <!-- Formulário de busca por UUID -->
+    <form [formGroup]="consultaForm" (ngSubmit)="consultarCliente()">
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <label for="id" class="form-label">ID do Cliente (UUID)</label>
+          <input
+            id="id"
+            type="text"
+            class="form-control"
+            formControlName="id"
+            placeholder="Ex: 550e8400-e29b-41d4-a716-446655440000"
+          />
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+          <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+      </div>
+    </form>
+  
+    <!-- Mensagem de erro -->
+    <div *ngIf="erroConsulta" class="alert alert-danger">
+      {{ erroConsulta }}
+    </div>
+  
+    <!-- Resultado da consulta: cliente único -->
+    <div *ngIf="cliente" class="mt-4">
+      <h4 class="text-success">Dados do Cliente</h4>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <p><strong>Nome:</strong> {{ cliente.nome }}</p>
+          <p><strong>Email:</strong> {{ cliente.email }}</p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
+          <p><strong>Data de Nascimento:</strong> {{ cliente.dataNascimento | date: 'yyyy-MM-dd' }}</p>
+        </div>
+      </div>
+  
+      <h5 class="text-secondary">Endereços</h5>
+      <div *ngFor="let endereco of cliente.enderecos; let i = index" class="border p-3 mb-3 rounded">
+        <h6>Endereço {{ i + 1 }}</h6>
+        <div class="row">
+          <div class="col-md-4"><strong>Logradouro:</strong> {{ endereco.logradouro }}</div>
+          <div class="col-md-2"><strong>Número:</strong> {{ endereco.numero }}</div>
+          <div class="col-md-3"><strong>Complemento:</strong> {{ endereco.complemento || '-' }}</div>
+          <div class="col-md-3"><strong>Bairro:</strong> {{ endereco.bairro }}</div>
+          <div class="col-md-4"><strong>Cidade:</strong> {{ endereco.cidade }}</div>
+          <div class="col-md-2"><strong>UF:</strong> {{ endereco.uf }}</div>
+          <div class="col-md-3"><strong>CEP:</strong> {{ endereco.cep }}</div>
+        </div>
+      </div>
+  
+      <!-- Botão de edição -->
+      <div class="d-flex justify-content-end mt-3">
+        <a class="btn btn-warning" [routerLink]="['/pages/edicao-cliente', cliente.id]" *ngIf="cliente?.id">
+          Editar Cliente
+        </a>
+      </div>
+    </div>
+  
+    <!-- Lista completa de clientes -->
+    <div *ngIf="clientes.length > 0" class="mt-4">
+      <h4 class="text-success">Lista de Clientes</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CPF</th>
+            <th>Data de Nascimento</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of clientes">
+            <td>{{ c.nome }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.cpf }}</td>
+            <td>{{ c.dataNascimento | date: 'yyyy-MM-dd' }}</td>
+            <td>
+              <a class="btn btn-warning btn-sm" [routerLink]="['/pages/edicao-cliente', c.id]">Editar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

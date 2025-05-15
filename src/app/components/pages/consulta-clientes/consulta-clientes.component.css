@@ -1,0 +1,40 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+  }
+  
+  label {
+    display: block;
+    margin-top: 1rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+  }
+  
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .erro {
+    color: red;
+    margin-top: 0.5rem;
+  }
+  
+  .resultado {
+    margin-top: 2rem;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  
+  .endereco {
+    margin-top: 1rem;
+    border-top: 1px solid #ccc;
+    padding-top: 1rem;
+  }
+  
