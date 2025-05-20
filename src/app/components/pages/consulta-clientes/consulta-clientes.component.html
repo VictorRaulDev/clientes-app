@@ -58,7 +58,12 @@
         <a class="btn btn-warning" [routerLink]="['/pages/edicao-cliente', cliente.id]" *ngIf="cliente?.id">
           Editar Cliente
         </a>
+          <button class="btn btn-danger btn-sm ms-2" (click)="excluirCliente(cliente.id)">
+          Excluir Cliente
+        </button>
+
       </div>
+      
     </div>
   
     <!-- Lista completa de clientes -->
@@ -82,6 +87,9 @@
             <td>{{ c.dataNascimento | date: 'yyyy-MM-dd' }}</td>
             <td>
               <a class="btn btn-warning btn-sm" [routerLink]="['/pages/edicao-cliente', c.id]">Editar</a>
+            </td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="excluirCliente(c.id)">Excluir</button>
             </td>
           </tr>
         </tbody>

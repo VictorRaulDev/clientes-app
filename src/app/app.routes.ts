@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { CadastroClientesComponent } from './components/pages/cadastro-clientes/cadastro-clientes.component';
 import { ConsultaClientesComponent } from './components/pages/consulta-clientes/consulta-clientes.component';
 import { EdicaoClientesComponent } from './components/pages/edicao-clientes/edicao-clientes.component';
-import { ExclusaoClientesComponent } from './components/pages/exclusao-clientes/exclusao-clientes.component';
+
 
 export const routes: Routes = [
 
@@ -18,9 +18,5 @@ export const routes: Routes = [
             path: 'pages/edicao-cliente/:id', //ROTA 
             component: EdicaoClientesComponent //COMPONENTE 
         },
-        { 
-            path: 'pages/exclusao-cliente', //ROTA 
-            component: ExclusaoClientesComponent //COMPONENTE 
-        }    
-
+        
 ];
